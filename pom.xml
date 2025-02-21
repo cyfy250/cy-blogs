@@ -62,6 +62,12 @@
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>3.5.7</version>
             </dependency>
+            <!--    jBCrypt 加密   -->
+            <dependency>
+                <groupId>org.mindrot</groupId>
+                <artifactId>jbcrypt</artifactId>
+                <version>0.4</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

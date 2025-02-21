@@ -16,6 +16,15 @@ public class ResultUtils {
         return new BaseResponse<>(ErrorCode.SUCCESS.getCode(), data, ErrorCode.SUCCESS.getMessage());
     }
 
+    /***
+     * 成功 （不返回数据）
+     * @param <T>   数据类型
+     * @return 响应
+     */
+    public static <T> BaseResponse<T> success() {
+        return new BaseResponse<>(ErrorCode.SUCCESS);
+    }
+
     /**
      * 失败
      *

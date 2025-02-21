@@ -22,7 +22,6 @@
             <groupId>com.cyfy</groupId>
             <artifactId>cy-blogs-common</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>
