@@ -51,6 +51,17 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- knife4j 接口文档  -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+                <version>4.4.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.5.7</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
