@@ -1,9 +1,9 @@
-package com.cyfy.cyblogsbackend.service.impl;
+package com.cyfy.cyblogsbackend.business.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cyfy.cyblogsbackend.domain.UserInfo;
-import com.cyfy.cyblogsbackend.service.UserInfoService;
-import com.cyfy.cyblogsbackend.mapper.UserInfoMapper;
+import com.cyfy.cyblogsbackend.business.domain.UserInfo;
+import com.cyfy.cyblogsbackend.business.service.UserInfoService;
+import com.cyfy.cyblogsbackend.business.mapper.UserInfoMapper;
 import org.springframework.stereotype.Service;
 
 /**

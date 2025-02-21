@@ -1,4 +1,4 @@
-package com.cyfy.cyblogsbackend.domain;
+package com.cyfy.cyblogsbackend.business.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

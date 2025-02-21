@@ -1,6 +1,6 @@
-package com.cyfy.cyblogsbackend.service;
+package com.cyfy.cyblogsbackend.business.service;
 
-import com.cyfy.cyblogsbackend.domain.UserInfo;
+import com.cyfy.cyblogsbackend.business.domain.UserInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

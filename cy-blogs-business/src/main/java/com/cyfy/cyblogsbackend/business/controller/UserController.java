@@ -1,7 +1,7 @@
-package com.cyfy.cyblogsbackend.controller;
+package com.cyfy.cyblogsbackend.business.controller;
 
-import com.cyfy.cyblogsbackend.domain.UserInfo;
-import com.cyfy.cyblogsbackend.service.UserInfoService;
+import com.cyfy.cyblogsbackend.business.domain.UserInfo;
+import com.cyfy.cyblogsbackend.business.service.UserInfoService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

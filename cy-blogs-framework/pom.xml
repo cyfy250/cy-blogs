@@ -22,11 +22,7 @@
             <groupId>com.cyfy</groupId>
             <artifactId>cy-blogs-common</artifactId>
         </dependency>
-        <!--引入mybatisPlus 包含了 jdbc-->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
+
     </dependencies>
 
 </project>
