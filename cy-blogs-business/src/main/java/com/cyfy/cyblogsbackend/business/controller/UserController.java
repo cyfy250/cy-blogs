@@ -1,5 +1,6 @@
 package com.cyfy.cyblogsbackend.business.controller;
 
+import cn.hutool.core.util.ObjUtil;
 import com.cyfy.cyblogsbackend.business.domain.UserInfo;
 import com.cyfy.cyblogsbackend.business.service.UserInfoService;
 import com.cyfy.cyblogsbackend.common.exception.BusinessException;
@@ -37,7 +38,7 @@ public class UserController {
         String password = userInfo.getUserPassword();
         // 查询用户是否存在
         UserInfo user = userInfoService.getById(userInfo.getUserId());
-        if (user == null) {
+        if (ObjUtil.isEmpty(user)) {
             throw new BusinessException(ErrorCode.ACCOUNT_NOT_EXIST);
         }
         // 对比密码是否一致
