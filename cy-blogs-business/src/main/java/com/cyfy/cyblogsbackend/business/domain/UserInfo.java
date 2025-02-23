@@ -35,6 +35,21 @@ public class UserInfo implements Serializable {
     private String userPassword;
 
     /**
+     * 用户昵称
+     */
+    private String userName;
+
+    /**
+     * 用户简介
+     */
+    private String userProfile;
+
+    /**
+     * 用户角色（USER/ADMIN）
+     */
+    private String userRole;
+
+    /**
      * 用户邮件
      */
     private String userEmail;
