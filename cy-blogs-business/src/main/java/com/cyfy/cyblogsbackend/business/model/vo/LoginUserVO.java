@@ -1,35 +1,22 @@
-package com.cyfy.cyblogsbackend.business.domain;
+package com.cyfy.cyblogsbackend.business.model.vo;
 
-import com.baomidou.mybatisplus.annotation.*;
+
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import lombok.Data;
-
-/**
- * 用户信息表
- *
- * @TableName user_info
- */
-@TableName(value = "user_info")
 @Data
-public class UserInfo implements Serializable {
+public class LoginUserVO implements Serializable {
     /**
      * 用户表主键
      */
-    @TableId(type = IdType.ASSIGN_ID)
     private Long userId;
 
     /**
      * 用户账号
      */
     private String userAccount;
-
-    /**
-     * 用户密码
-     */
-    private String userPassword;
 
     /**
      * 用户昵称
@@ -66,12 +53,6 @@ public class UserInfo implements Serializable {
      */
     private Date updateTime;
 
-    /**
-     * 是否删除
-     */
-    @TableLogic
-    private Integer isDelete;
 
-    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

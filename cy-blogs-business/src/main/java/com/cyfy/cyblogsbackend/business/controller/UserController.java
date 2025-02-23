@@ -2,18 +2,20 @@ package com.cyfy.cyblogsbackend.business.controller;
 
 import cn.hutool.core.util.ObjUtil;
 import com.cyfy.cyblogsbackend.business.domain.UserInfo;
+import com.cyfy.cyblogsbackend.business.model.dto.user.UserLoginRequest;
+import com.cyfy.cyblogsbackend.business.model.dto.user.UserRegisterRequest;
+import com.cyfy.cyblogsbackend.business.model.vo.LoginUserVO;
 import com.cyfy.cyblogsbackend.business.service.UserInfoService;
 import com.cyfy.cyblogsbackend.common.exception.BusinessException;
 import com.cyfy.cyblogsbackend.common.exception.ErrorCode;
+import com.cyfy.cyblogsbackend.common.exception.ThrowUtils;
 import com.cyfy.cyblogsbackend.common.result.BaseResponse;
 import com.cyfy.cyblogsbackend.common.result.ResultUtils;
 import com.cyfy.cyblogsbackend.common.tools.EncipherUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/user")
@@ -21,48 +23,30 @@ public class UserController {
     @Resource
     private UserInfoService userInfoService;
 
-    @PostMapping("/add")
-    public BaseResponse<String> add(@RequestBody UserInfo userInfo) {
-        // 获取用户密码
-        String password = userInfo.getUserPassword();
-        // 对密码进行加密
-        userInfo.setUserPassword(EncipherUtils.hashPsd(password));
-        userInfoService.save(userInfo);
-        return ResultUtils.success();
-    }
-
-    // 登录
     @PostMapping("/login")
-    public BaseResponse<String> login(@RequestBody UserInfo userInfo) {
-        // 获取用户密码
-        String password = userInfo.getUserPassword();
-        // 查询用户是否存在
-        UserInfo user = userInfoService.getById(userInfo.getUserId());
-        if (ObjUtil.isEmpty(user)) {
-            throw new BusinessException(ErrorCode.ACCOUNT_NOT_EXIST);
-        }
-        // 对比密码是否一致
-        if (!EncipherUtils.checkPsd(password, user.getUserPassword())) {
-            throw new BusinessException(ErrorCode.PASSWORD_ERROR);
-        }
-        return ResultUtils.success();
+    public BaseResponse<String> userLogin(@RequestBody UserLoginRequest userLoginRequest, HttpServletRequest request) {
+        ThrowUtils.throwIf(userLoginRequest == null, ErrorCode.PARAMS_ERROR);
+        String loginUserToken = userInfoService.userLogin(userLoginRequest, request);
+        return ResultUtils.success(loginUserToken);
     }
 
-    @PostMapping("/get")
-    public UserInfo get(long id) {
-
-        return userInfoService.getById(id);
+    @PostMapping("/register")
+    public BaseResponse<Long> userRegister(@RequestBody UserRegisterRequest userRegisterRequest) {
+        ThrowUtils.throwIf(userRegisterRequest == null, ErrorCode.PARAMS_ERROR);
+        long result = userInfoService.userRegister(userRegisterRequest);
+        return ResultUtils.success(result);
     }
 
-    @PostMapping("/update")
-    public String update(@RequestBody UserInfo userInfo) {
-        userInfoService.updateById(userInfo);
-        return "success";
+    @GetMapping("/get/login")
+    public BaseResponse<LoginUserVO> getLoginUser(HttpServletRequest request) {
+        LoginUserVO result = userInfoService.getCurrentLoginUser(request);
+        return ResultUtils.success(result);
     }
 
-    @PostMapping("/delete")
-    public String delete(long id) {
-        userInfoService.removeById(id);
-        return "success";
+    @PostMapping("/logout")
+    public BaseResponse<Boolean> userLogout(HttpServletRequest request) {
+        ThrowUtils.throwIf(request == null, ErrorCode.PARAMS_ERROR);
+        boolean result = userInfoService.userLogout(request);
+        return ResultUtils.success(result);
     }
 }

@@ -13,6 +13,7 @@ public enum ErrorCode {
     NO_AUTH_ERROR(40101, "无权限"),
     ACCOUNT_NOT_EXIST(40011, "账号不存在"),
     PASSWORD_ERROR(40012, "密码错误"),
+    TOKEN_ERROR(40020, "无效令牌"),
     NOT_FOUND_ERROR(40400, "请求数据不存在"),
     FORBIDDEN_ERROR(40300, "禁止访问"),
     SYSTEM_ERROR(50000, "系统内部异常"),

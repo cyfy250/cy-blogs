@@ -80,6 +80,7 @@ public class JwtUtil {
      * @return
      */
     public <T> T parseToken(String token, Class<T> clazz) {
+
         Claims body = parseToken(token);
         return JSON.parseObject(body.getSubject(), clazz);
     }
