@@ -2,7 +2,13 @@
 server:
   # 服务器的HTTP端口，默认为 8080
   port: 8081
-
+  address: 0.0.0.0
+  servlet:
+    context-path: /api
+    # cookie 30 天过期
+    session:
+      cookie:
+        max-age: 2592000
 # 数据库连接配置,记得新建一个数据库
 spring:
   datasource:
