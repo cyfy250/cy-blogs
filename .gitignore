@@ -31,3 +31,5 @@ build/
 ### VS Code ###
 .vscode/
 /cy-blogs-admin/dependency-reduced-pom.xml
+# 忽视测试文件
+/cy-blogs-admin/src/test/
